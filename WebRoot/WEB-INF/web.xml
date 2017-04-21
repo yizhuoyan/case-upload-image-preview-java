@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+
+<filter>
+	<filter-name>图片预览剪切</filter-name>
+	<filter-class>com.yihuoyan.previewupload.filter.PreviewUploadFilter</filter-class>
+	<init-param>
+		<description>设置允许上传的文件大小,单位byte</description>
+		<param-name>maxFileSize</param-name>
+		<param-value>102400</param-value>
+	</init-param>
+	<init-param>
+		<description>设置允许图片类型</description>
+		<param-name>allowType</param-name>
+		<param-value>gif,png,jpg</param-value>
+	</init-param>
+	<!-- 
+	<init-param>
+		<description>设置图片在request域存放名字,默认是表单字段名</description>
+		<param-name>attributeName</param-name>
+		<param-value>gif,png,jpg</param-value>
+	</init-param>
+	 -->
+</filter>
+  <filter-mapping>
+  	<filter-name>图片预览剪切</filter-name>
+  	<servlet-name>tt</servlet-name>
+  </filter-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>tt</servlet-name>
+  	<servlet-class>com.yihuoyan.previewupload.servlet.FileUpload</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>tt</servlet-name>
+  	<url-pattern>/upload.do</url-pattern>
+  </servlet-mapping>
+</web-app>
